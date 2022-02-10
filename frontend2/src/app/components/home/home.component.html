@@ -1,0 +1,35 @@
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- section title -->
+      <div class="col-md-12">
+        <div class="section-title">
+          <h3 class="title">Projects</h3>
+        </div>
+      </div>
+      <!-- /section title -->
+      <div class="col-md-12">
+        <div class="row">
+          <!-- Project list -->
+          <div class="col-md-4 col-sm-6" *ngFor="let p of projectList">
+            <div class="card my-2">
+              <div class="card-header">
+                <div class="card-title">
+                  <p>{{p.projectName | titlecase}}</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <h6>{{ p.description == null ? 'No Description' : p.description.substr(0, 40) + '...'}}</h6>
+                <p class="lead">{{p.projectStatus}}</p>
+              </div>
+            </div>
+          </div>
+          <!-- /Project list -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
