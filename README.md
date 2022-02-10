@@ -1,3 +1,1 @@
-"# EcommerceAngularNode" 
-"# EcommerceAngularNodeMySQL" 
-"# EcommerceAngularNodeMySQL" 
+# EcommerceAngularNode
