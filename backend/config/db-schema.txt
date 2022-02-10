@@ -1,0 +1,75 @@
+-- db-schema.txt 
+-- ITCPA Capstone Project 
+-- 
+-- Revision History 
+--  Jeonghwan Ju, 2022.02.02: Created 
+--  Jeonghwan Ju, 2022.02.02: Added 'Client' table 
+--  Jeonghwan Ju, 2022.02.03: Added 'Project' table
+--  Jeonghwan Ju, 2022.02.07: Added 'Province' table and data
+--  Jeonghwan Ju, 2022.02.07: Edited 'Client' and 'Project' table
+
+-- Table Schema (In alphabetical order.) 
+
+CREATE TABLE user 
+( 
+  userId INT(10) NOT NULL AUTO_INCREMENT,  
+  firstName VARCHAR(50) NOT NULL,
+  lastName VARCHAR(50) NOT NULL,
+  userRole TINYINT(3) NOT NULL DEFAULT 1,   -- 1:Client 2:Student 3:Coordinator
+  clientName VARCHAR(50) NULL,
+  email VARCHAR(40) NOT NULL, 
+  password VARCHAR(60) NOT NULL,
+  streetAddress VARCHAR(50) NULL,
+  streetAddress2 VARCHAR(60) NULL,
+  city VARCHAR(40) NULL,
+  provinceCode VARCHAR(2) NULL,
+  postalCode VARCHAR(6) NULL,
+  website VARCHAR(100) NULL,
+  created DATETIME NULL,
+  updated DATETIME NULL,
+  PRIMARY KEY (userId) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+ALTER TABLE user ADD UNIQUE (email); 
+
+CREATE TABLE project 
+( 
+  projectId INT(10) NOT NULL AUTO_INCREMENT,  
+  projectName VARCHAR(100) NOT NULL, 
+  contactFirstName VARCHAR(50) NULL,
+  contactLastName VARCHAR(50) NULL,
+  contactEmail VARCHAR(40) NULL,
+  contactPhone VARCHAR(15) NULL,
+  description VARCHAR(2000) NULL,
+  businessGoals VARCHAR(2000) NULL,
+  prerequisites VARCHAR(2000) NULL,
+  additionalNotes VARCHAR(2000) NULL,
+  projectStatus TINYINT(3) NULL DEFAULT 1,  -- 1:Saved 2:Proposed 3:Approved 4:Taken 5:InProgress 6:Completed
+  clientUserId INT(10) NULL, 
+  created DATETIME NULL,
+  updated DATETIME NULL,
+  PRIMARY KEY (projectId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+ALTER TABLE project ADD UNIQUE (projectName); 
+
+
+CREATE TABLE province 
+( 
+  provinceCode VARCHAR(2) NOT NULL,
+  provinceName VARCHAR(50) NOT NULL,
+  PRIMARY KEY (provinceCode)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+ALTER TABLE Province ADD UNIQUE (provinceName);
+
+INSERT INTO Province (provinceCode, provinceName) VALUES ('AB', 'Alberta');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('BC', 'British Columbia');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('MB', 'Manitoba');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('NB', 'New Brunswick');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('NL', 'Newfoundland and Labrador');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('NT', 'Northwest Territories');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('NS', 'Nova Scotia');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('NU', 'Nunavut');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('ON', 'Ontario');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('PE', 'Prince Edward Island');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('QC', 'Quebec');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('SK', 'Saskatchewan');
+INSERT INTO Province (provinceCode, provinceName) VALUES ('YT', 'Yukon');
